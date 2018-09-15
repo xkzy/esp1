@@ -71,8 +71,8 @@ BLYNK_WRITE(V5)
   //restoring int value
   min1 = param.asInt();
 }
-void ota_init(){
-  
+void ota_init() {
+
   // Port defaults to 8266
   // ArduinoOTA.setPort(8266);
 
@@ -184,7 +184,7 @@ void turnon()
   tt t(0, 0, startTimeInSecs);
   t.to_F();
   Serial.println(String(t.h, DEC) + ':' + String(t.m, DEC) + ':' + String(t.s, DEC) + '\t' + String(hour(), DEC) + ':' + String(minute(), DEC) + ':' + String(second(), DEC));
-  if (hour() == t.h && minute() == t.m&& second() == t.s) {
+  if (hour() == t.h && minute() == t.m && second() == t.s) {
     Blynk.virtualWrite(D0, LOW) ;
     Serial.println("Watering");
     digitalWrite(D0, LOW);
@@ -196,7 +196,7 @@ void turnoff()
 {
   tt t(0, 0, startTimeInSecs + duration);
   t.to_F();
-  if (hour() == t.h && minute() == t.m&& second() == t.s) {
+  if (hour() == t.h && minute() == t.m && second() == t.s) {
     Blynk.virtualWrite(D0, HIGH) ;
     Serial.println("stop");
     digitalWrite(D0, HIGH);
@@ -238,7 +238,7 @@ void level_1()
     Blynk.virtualWrite(D0, HIGH);
   }
 }
-void pin_init(){
+void pin_init() {
   pinMode(D0, OUTPUT);
   digitalWrite(D0, HIGH);
   pinMode(TRIGGERPIN, OUTPUT);
@@ -253,7 +253,7 @@ void setup()
   // Debug console
   Serial.begin(115200);
   Serial.println("Booting");
-  
+
 
   Serial.println();
 
@@ -262,7 +262,7 @@ void setup()
 
   //read configuration from FS json
   Serial.println("mounting FS...");
-  
+
   hostname += String(ESP.getChipId(), HEX);
   WiFi.hostname(hostname);
   if (SPIFFS.begin()) {
